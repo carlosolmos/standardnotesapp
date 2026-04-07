@@ -111,12 +111,9 @@ describe('mfa service', () => {
     await application.mfa.enableMfa(secret, token)
 
     const mfaSettingName = SettingName.create(SettingName.NAMES.MfaSecret).getValue()
-    try {
-      await application.settings.deleteSetting(mfaSettingName, undefined)
-      expect.fail('deleteSetting should throw when server password is omitted for MFA_SECRET')
-    } catch (error) {
-      expect(error.message).to.equal('Please update your application to the latest version.')
-    }
+    await expect(application.settings.deleteSetting(mfaSettingName, undefined)).to.be.rejectedWith(
+      'Please update your application to the latest version.',
+    )
   }).timeout(Factory.TenSecondTimeout)
 
   it('should not allow disabling mfa if server password is incorrect', async function () {
@@ -130,11 +127,8 @@ describe('mfa service', () => {
     await application.mfa.enableMfa(secret, token)
 
     const mfaSettingName = SettingName.create(SettingName.NAMES.MfaSecret).getValue()
-    try {
-      await application.settings.deleteSetting(mfaSettingName, 'wrong-password')
-      expect.fail('deleteSetting should throw when server password is wrong')
-    } catch (error) {
-      expect(error.message).to.equal('The password you entered is incorrect. Please try again.')
-    }
+    await expect(application.settings.deleteSetting(mfaSettingName, 'wrong-password')).to.be.rejectedWith(
+      'The password you entered is incorrect. Please try again.',
+    )
   }).timeout(Factory.TenSecondTimeout)
 })
