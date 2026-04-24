@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.201.26](https://github.com/standardnotes/app/compare/@standardnotes/web@3.201.25...@standardnotes/web@3.201.26) (2026-04-24)
+
+### Bug Fixes
+
+* Shows info on UI and hides Manage button for shared subs ([#3002](https://github.com/standardnotes/app/issues/3002)) ([073db14](https://github.com/standardnotes/app/commit/073db143144bf88007010e4f44003198b327b4da))
+
 ## [3.201.25](https://github.com/standardnotes/app/compare/@standardnotes/web@3.201.24...@standardnotes/web@3.201.25) (2026-04-23)
 
 ### Bug Fixes
